@@ -1,0 +1,9 @@
+dependencies:
+- name: tr-authentication-api
+  repository: http://trend-dev.ru:5000
+  version: 1.4.3-f5c5b3acec877f23a33c1814a54ac344149d7df3
+- name: tr-trendrealty-api
+  repository: http://trend-dev.ru:5000
+  version: 5.27.8-ec74eec717f79dcbbbb9d742e360920d55c130fc
+digest: sha256:c4a25f44a034bd55b0a9346d06ce90fcf58c534e53316beacc64e77c0b2685c6
+generated: "2022-02-21T17:11:47.332125+03:00"
