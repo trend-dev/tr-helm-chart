@@ -25,6 +25,11 @@ jobs:
               with:
                   version: v3.7.1
 
+            - name: Add trend repo
+              shell: bash
+              run: |
+                  helm repo add trend http://trend-dev.ru:5000 --password ${{ secrets.CHART_PASS }} --username ${{ secrets.CHART_USER }}
+
             - name: Run chart-releaser
               uses: helm/chart-releaser-action@v1.3.0
               env:
