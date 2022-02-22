@@ -1,0 +1,21 @@
+apiVersion: v1
+entries:
+  tr-system:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2022-02-22T10:58:05.212911018Z"
+    dependencies:
+    - name: tr-authentication-api
+      repository: http://trend-dev.ru:5000
+      version: 1.4.3-f5c5b3acec877f23a33c1814a54ac344149d7df3
+    - name: tr-trendrealty-api
+      repository: http://trend-dev.ru:5000
+      version: 5.27.8-ec74eec717f79dcbbbb9d742e360920d55c130fc
+    description: A Helm chart for Kubernetes
+    digest: 7c434ff2b57f984ca560c23c14787fd656dbaa158fdc971bf626949af076c5ad
+    name: tr-system
+    type: application
+    urls:
+    - https://github.com/trend-dev/tr-helm-chart/releases/download/tr-system-0.0.2/tr-system-0.0.2.tgz
+    version: 0.0.2
+generated: "2022-02-22T10:58:05.212919918Z"
