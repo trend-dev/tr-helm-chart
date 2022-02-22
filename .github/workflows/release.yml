@@ -36,6 +36,10 @@ jobs:
                     APP_NAME: "tr-trendrealty-api"
                 run: echo "::set-output name VALUE=$.dependencies[?(@.name=${APP_NAME})].version"
 
+            -   shell: bash
+                run: |
+                    echo ${{ steps.path.outputs.VALUE }}
+
             -   name: Update Image Version in the related HelmChart values.yaml
                 uses: fjogeleit/yaml-update-action@master
                 with:
