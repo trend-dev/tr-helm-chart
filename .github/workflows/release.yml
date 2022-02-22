@@ -10,27 +10,41 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
+            -   name: Checkout
+                uses: actions/checkout@v2
+                with:
+                    fetch-depth: 0
 
-            - name: Configure Git
-              run: |
-                  git config user.name "$GITHUB_ACTOR"
-                  git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            -   name: Configure Git
+                run: |
+                    git config user.name "$GITHUB_ACTOR"
+                    git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-            - name: Install Helm
-              uses: azure/setup-helm@v1
-              with:
-                  version: v3.7.1
+            -   name: Install Helm
+                uses: azure/setup-helm@v1
+                with:
+                    version: v3.7.1
 
-            - name: Add trend repo
-              shell: bash
-              run: |
-                  helm repo add trend http://trend-dev.ru:5000 --password ${{ secrets.CHART_PASS }} --username ${{ secrets.CHART_USER }}
+            -   name: Add trend repo
+                shell: bash
+                run: |
+                    helm repo add trend http://trend-dev.ru:5000 --username ${{ secrets.CHART_USER }} --password ${{ secrets.CHART_PASS }}
 
-            - name: Run chart-releaser
-              uses: helm/chart-releaser-action@v1.3.0
-              env:
-                  CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+            -   name: Update Image Version in the related HelmChart values.yaml
+                uses: fjogeleit/yaml-update-action@master
+                env:
+                    APP_NAME: "tr-trendrealty-api"
+                with:
+                    valueFile: 'charts/tr-system/Chart.yaml'
+                    propertyPath: '$.dependencies[?(@.name=${APP_NAME})].version'
+                    value: "100.500.0-check"
+                    branch: "team-05"
+                    targetBranch: development
+                    message: 'Update ${APP_NAME}'
+
+            -   name: Deploy
+                shell: bash
+                run: |
+                    cd ./charts/tr-system/
+                    helm dependency build ./
+                    helm upgrade tr-system --install --namespace ${{ github.ref }} ./ --atomic 
