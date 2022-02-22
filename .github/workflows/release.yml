@@ -34,7 +34,7 @@ jobs:
                 id: path
                 env:
                     APP_NAME: "tr-trendrealty-api"
-                run: echo '::set-output name=VALUE::"dependencies[?(@.name=${APP_NAME})].version"'
+                run: echo "::set-output name=VALUE::'$.dependencies[?(@.name=${APP_NAME})].version'"
 
             -   shell: bash
                 run: |
