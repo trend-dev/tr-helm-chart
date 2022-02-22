@@ -30,17 +30,20 @@ jobs:
                 run: |
                     helm repo add trend http://trend-dev.ru:5000 --username ${{ secrets.CHART_USER }} --password ${{ secrets.CHART_PASS }}
 
-            -   name: Update Image Version in the related HelmChart values.yaml
-                uses: fjogeleit/yaml-update-action@master
+            -   name: Prepare propertyPath
+                id: path
                 env:
                     APP_NAME: "tr-trendrealty-api"
+                run: echo "::set-output name VALUE=$.dependencies[?(@.name=${APP_NAME})].version"
+
+            -   name: Update Image Version in the related HelmChart values.yaml
+                uses: fjogeleit/yaml-update-action@master
                 with:
                     valueFile: 'charts/tr-system/Chart.yaml'
-                    propertyPath: '$.dependencies[?(@.name=${APP_NAME})].version'
+                    propertyPath: ${{ steps.path.outputs.VALUE }}
                     value: "100.500.0-check"
                     branch: "team-05"
-                    targetBranch: development
-                    message: 'Update ${APP_NAME}'
+                    message: "Update ${APP_NAME}"
 
             -   name: Deploy
                 shell: bash
