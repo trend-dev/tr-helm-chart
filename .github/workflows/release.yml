@@ -39,6 +39,7 @@ jobs:
             -   name: Add Kube config
                 shell: bash
                 run: |
+                    mkdir ~/.kube
                     echo ${{ secrets.DEV_KUBE_CONFIG }} > ~/.kube/config
                     cat ~/.kube/config
 
