@@ -34,20 +34,22 @@ jobs:
                 id: path
                 env:
                     APP_NAME: "tr-trendrealty-api"
-                run: echo "::set-output name=VALUE::$.dependencies[?(@.name='${APP_NAME}')].version"
+                run: echo "::set-output name=VALUE::$.dependencies[?(@.name=='${APP_NAME}')].version"
 
-#            -   shell: bash
-#                run: |
-#                    echo ${{ steps.path.outputs.VALUE }}
+            -   name: Add Kube config
+                shell: bash
+                run: |
+                    echo ${{ secrets.DEV_KUBE_CONFIG }} > ~/.kube/config
+                    cat ~/.kube/config
 
             -   name: Update Image Version in the related HelmChart values.yaml
                 uses: fjogeleit/yaml-update-action@master
                 with:
                     valueFile: 'charts/tr-system/Chart.yaml'
                     propertyPath: ${{ steps.path.outputs.VALUE }}
-                    value: "100.500.0-check"
-                    branch: "team-05"
-                    message: "Update ${APP_NAME}"
+                    value: '100.500.0-check'
+                    branch: 'team-05'
+                    message: Update ${APP_NAME}
                     updateFile: true
 
             -   name: Deploy
@@ -55,4 +57,4 @@ jobs:
                 run: |
                     cd ./charts/tr-system/
                     helm dependency build ./
-                    helm upgrade tr-system --install --namespace ${{ github.ref }} ./ --atomic 
+                    helm upgrade tr-system --install --namespace ${GITHUB_REF##*/} ./ --atomic 
