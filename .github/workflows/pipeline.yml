@@ -1,0 +1,35 @@
+name: Build & Deploy
+
+on:
+    workflow_dispatch:
+        inputs:
+            LOCATION:
+                description: 'Select environment (stage, team-01 - team-05)'
+                required: true
+                default: team-04
+                type: choice
+                options:
+                    - none
+                    - stage
+                    - team-01
+                    - team-02
+                    - team-03
+                    - team-04
+                    - team-05
+            NOTIFY:
+                description: 'Send message after deploy'
+                required: true
+                type: boolean
+                default: 'true'
+
+jobs:
+    release:
+        if: github.event.inputs.BUILD == 'true'
+        needs: version
+        uses: trend-dev/tr-helm-chart/.github/workflows/release.yml@master
+        with:
+            APP_NAME: ${{ needs.version.outputs.APP_NAME }}
+            CHART_FOLDER: './charts/tr-system'
+        secrets:
+            CHART_USER: ${{ secrets.CHART_USER }}
+            CHART_PASS: ${{ secrets.CHART_PASS }}

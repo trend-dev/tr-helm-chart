@@ -1,10 +1,22 @@
 name: Release Charts
 
 on:
-    push:
-        branches:
-            - master
-            - team-05
+    workflow_call:
+        inputs:
+            APP_NAME:
+                type: string
+                required: false
+                default: ''
+            APP_VERSION:
+                type: string
+                required: false
+                default: ''
+            LOCATION:
+                type: string
+                required: true
+        secrets:
+            DEV_KUBE_CONFIG:
+                required: true
 
 jobs:
     release:
@@ -32,9 +44,7 @@ jobs:
 
             -   name: Prepare propertyPath
                 id: path
-                env:
-                    APP_NAME: "tr-trendrealty-api"
-                run: echo "::set-output name=VALUE::$.dependencies[?(@.name=='${APP_NAME}')].version"
+                run: echo "::set-output name=VALUE::$.dependencies[?(@.name=='${{ github.event.inputs.APP_NAME }}')].version"
 
             -   name: Add Kube config
                 shell: bash
@@ -44,18 +54,19 @@ jobs:
                     cat ~/.kube/config
 
             -   name: Update Image Version in the related HelmChart values.yaml
+                if: github.event.inputs.APP_VERSION != ''
                 uses: fjogeleit/yaml-update-action@master
                 with:
                     valueFile: 'charts/tr-system/Chart.yaml'
                     propertyPath: ${{ steps.path.outputs.VALUE }}
-                    value: '100.500.0-check'
-                    branch: 'team-05'
-                    message: Update ${APP_NAME}
+                    value: ${{ github.event.inputs.APP_VERSION }}
+                    branch: ${{ github.event.inputs.LOCATION }}
+                    message: Update ${{ github.event.inputs.APP_NAME }}
                     updateFile: true
 
-            -   name: Deploy
+            -   name: Upgrade
                 shell: bash
                 run: |
                     cd ./charts/tr-system/
                     helm dependency build ./
-                    helm upgrade tr-system --install --namespace ${GITHUB_REF##*/} ./ --atomic 
+                    helm upgrade tr-system --install --namespace ${{ github.event.inputs.LOCATION }} ./ --atomic 
