@@ -22,8 +22,6 @@ on:
             DEV_KUBE_CONFIG:
                 required: true
 
-permissions: write-all
-
 jobs:
     release:
         runs-on: ubuntu-latest
@@ -77,6 +75,7 @@ jobs:
                     message: Update ${{ inputs.APP_NAME }}
                     updateFile: true
                     repository: trend-dev/tr-helm-chart
+                    token: ${{ secrets.GITHUB_TOKEN }}
 
             -   name: Upgrade
                 shell: bash
