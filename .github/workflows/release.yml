@@ -33,6 +33,11 @@ jobs:
                     ref: ${{ github.event.inputs.LOCATION }}
                     fetch-depth: 0
 
+            -   name: Check
+                run: |
+                    echo ${{ github.event.inputs.APP_NAME }}
+                    echo ${{ github.event.inputs.APP_VERSION }}
+
             -   name: Configure Git
                 run: |
                     git config user.name "$GITHUB_ACTOR"
