@@ -35,8 +35,8 @@ jobs:
 
             -   name: Check
                 run: |
-                    echo ${{ github.event.inputs.APP_NAME }}
-                    echo ${{ github.event.inputs.APP_VERSION }}
+                    echo ${{ inputs.APP_NAME }}
+                    echo ${{ inputs.APP_VERSION }}
 
             -   name: Configure Git
                 run: |
@@ -55,7 +55,7 @@ jobs:
 
             -   name: Prepare propertyPath
                 id: path
-                run: echo "::set-output name=VALUE::$.dependencies[?(@.name=='${{ github.event.inputs.APP_NAME }}')].version"
+                run: echo "::set-output name=VALUE::$.dependencies[?(@.name=='${{ inputs.APP_NAME }}')].version"
 
             -   name: Add Kube config
                 shell: bash
@@ -65,14 +65,14 @@ jobs:
                     cat ~/.kube/config
 
             -   name: Update Image Version in the related HelmChart values.yaml
-                if: github.event.inputs.APP_VERSION != ''
+                if: inputs.APP_VERSION != ''
                 uses: fjogeleit/yaml-update-action@master
                 with:
                     valueFile: 'charts/tr-system/Chart.yaml'
                     propertyPath: ${{ steps.path.outputs.VALUE }}
-                    value: ${{ github.event.inputs.APP_VERSION }}
-                    branch: ${{ github.event.inputs.LOCATION }}
-                    message: Update ${{ github.event.inputs.APP_NAME }}
+                    value: ${{ inputs.APP_VERSION }}
+                    branch: ${{ inputs.LOCATION }}
+                    message: Update ${{ inputs.APP_NAME }}
                     updateFile: true
 
             -   name: Upgrade
@@ -80,4 +80,4 @@ jobs:
                 run: |
                     cd ./charts/tr-system/
                     helm dependency build ./
-                    helm upgrade tr-system --install --namespace ${{ github.event.inputs.LOCATION }} ./ --atomic 
+                    helm upgrade tr-system --install --namespace ${{ inputs.LOCATION }} ./ --atomic 
