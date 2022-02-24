@@ -74,6 +74,7 @@ jobs:
                     branch: ${{ inputs.LOCATION }}
                     message: Update ${{ inputs.APP_NAME }}
                     updateFile: true
+                    repository: trend-dev/tr-helm-chart
 
             -   name: Upgrade
                 shell: bash
