@@ -102,4 +102,4 @@ jobs:
                 run: |
                     cd ./charts/tr-system/
                     helm dependency build ./
-                    helm upgrade tr-system --install --namespace ${{ inputs.LOCATION }} ./ --atomic
+                    helm upgrade tr-system --install --namespace ${{ inputs.LOCATION }} ./
