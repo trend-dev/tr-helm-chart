@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Deploy
 
 on:
     workflow_dispatch:
@@ -16,6 +16,8 @@ on:
                     - team-03
                     - team-04
                     - team-05
+                    - mobile-team-01
+                    - mobile-team-02
             NOTIFY:
                 description: 'Send message after deploy'
                 required: true
@@ -24,7 +26,6 @@ on:
 
 jobs:
     release:
-        if: github.event.inputs.BUILD == 'true'
         needs: version
         uses: trend-dev/tr-helm-chart/.github/workflows/release.yml@master
         with:
