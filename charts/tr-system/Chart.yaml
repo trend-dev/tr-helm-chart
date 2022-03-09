@@ -9,5 +9,5 @@ dependencies:
     version: 2.0.0-658c91d82c31df50e216a0d3a31327429c420820
     repository: http://trend-dev.ru:5000
   - name: tr-trendrealty-api
-    version: 5.27.9-d1a83f511e65fa0e286e2ede9989208bce35cdf8
+    version: 5.27.10-d7f8b7afba9873baf03007f2ecb6b4a6d2b61eab
     repository: http://trend-dev.ru:5000
