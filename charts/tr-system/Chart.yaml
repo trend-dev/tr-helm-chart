@@ -12,5 +12,5 @@ dependencies:
     version: 5.27.12-7bc493cbf80e2ccd27118aee0a2349f8e0be2f70
     repository: http://trend-dev.ru:5000
   - name: tr-questionnaire-api
-    version: 1.2.1-41033f3961f36455bfe2836a35c39e64df519b9e
+    version: 1.2.2-50c6512bf15e152d3a3f2ba2da022a52454dd7d4
     repository: http://trend-dev.ru:5000
