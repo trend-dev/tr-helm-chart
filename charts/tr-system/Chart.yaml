@@ -6,7 +6,7 @@ version: 0.0.2
 appVersion: 0.0.2
 dependencies:
   - name: tr-authentication-api
-    version: 2.0.6-6e125932a62631de00dc4c207af0433cf7e0590c
+    version: 2.0.9-3ab0e2cc5187cad1e52095f3b7d4a461ca8833a9
     repository: http://trend-dev.ru:5000
   - name: tr-trendrealty-api
     version: 5.28.1-f6e25e7bc26300c0f31f561c76d82d4b371e4f27
