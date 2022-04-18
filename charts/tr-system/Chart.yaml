@@ -14,6 +14,9 @@ dependencies:
   - name: tr-questionnaire-api
     version: 1.2.3-26648ab9f43381eec13dc8a9d1a57414bea6776b
     repository: http://trend-dev.ru:5000
+  - name: ta-cabinets-api
+    version: 0.0.0
+    repository: http://trend-dev.ru:5000
   - name: tr-cp-api
     version: 1.10.13-e845fd1e904efd2423241ad62f8471c568c76110
     repository: http://trend-dev.ru:5000
