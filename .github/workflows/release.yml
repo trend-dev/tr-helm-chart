@@ -64,7 +64,6 @@ jobs:
                 run: |
                     mkdir ~/.kube
                     echo ${{ secrets.DEV_KUBE_CONFIG }} | base64 -d > ~/.kube/config
-                    cat ~/.kube/config
 
             -   name: Update Image Version in the related HelmChart values.yaml
                 if: inputs.APP_VERSION != ''
