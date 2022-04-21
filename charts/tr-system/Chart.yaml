@@ -9,7 +9,7 @@ dependencies:
     version: 2.0.11-67e2b95bf5375dfb983a67de2a5bb319bf73ba5a
     repository: http://trend-dev.ru:5000
   - name: tr-trendrealty-api
-    version: 5.28.1-532ef14a33fb3b3e645ce5840de7650cdd5251c2
+    version: 5.28.1-6936c33e3a058fdb6c07b25e52edc9df7c71ca80
     repository: http://trend-dev.ru:5000
   - name: tr-questionnaire-api
     version: 1.2.3-26648ab9f43381eec13dc8a9d1a57414bea6776b
