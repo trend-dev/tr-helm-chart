@@ -18,5 +18,5 @@ dependencies:
     version: 1.4.0-a9760036f00480951de74055520eab2c107de800
     repository: http://trend-dev.ru:5000
   - name: tr-cp-api
-    version: 1.10.13-e845fd1e904efd2423241ad62f8471c568c76110
+    version: 1.10.13-e17b454e29dd0d5a9fda0301983188917adfa485
     repository: http://trend-dev.ru:5000
