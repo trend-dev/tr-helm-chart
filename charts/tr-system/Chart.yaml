@@ -15,7 +15,7 @@ dependencies:
     version: 1.3.2-587ecedbc04740cbe0dfbf19a1086d3980bd1601
     repository: http://trend-dev.ru:5000
   - name: ta-cabinets-api
-    version: 1.5.2-8b095798d1fa4dc7959fc46d2287b9517d249961
+    version: 1.5.2-3b03270b4fc80e5bffb69d7efaa0716731c42f6c
     repository: http://trend-dev.ru:5000
   - name: tr-cp-api
     version: 1.10.13-e17b454e29dd0d5a9fda0301983188917adfa485
