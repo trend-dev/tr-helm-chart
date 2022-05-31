@@ -7,16 +7,16 @@ appVersion: 0.0.2
 dependencies:
   - name: tr-authentication-api
     version: 2.0.11-67e2b95bf5375dfb983a67de2a5bb319bf73ba5a
-    repository: http://trend-dev.ru:5000
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-trendrealty-api
     version: 5.29.1-1c19400dfbb79c3af074a3aae6bfc2163ac48e33
-    repository: http://trend-dev.ru:5000
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-questionnaire-api
     version: 1.3.0-0e94a4f10f4a4c365c016a745bc77ce903c6b6af
-    repository: http://trend-dev.ru:5000
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: ta-cabinets-api
     version: 1.4.2-cabc72d5de9e08add02a620e5e3f7b6cc4126537
-    repository: http://trend-dev.ru:5000
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-cp-api
     version: 1.10.13-e17b454e29dd0d5a9fda0301983188917adfa485
-    repository: http://trend-dev.ru:5000
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
