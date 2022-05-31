@@ -12,7 +12,7 @@ dependencies:
     version: 5.29.3-003581cdf0f935b38912a5a0f24a64ada8a8bfc7
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-questionnaire-api
-    version: 1.3.0-0e94a4f10f4a4c365c016a745bc77ce903c6b6af
+    version: 1.3.8-f276990dd1db7387b01c0ef5f26d23676d8f8604
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: ta-cabinets-api
     version: 1.4.2-cabc72d5de9e08add02a620e5e3f7b6cc4126537
