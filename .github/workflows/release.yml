@@ -24,10 +24,10 @@ on:
                 required: true
             DOCKER_REGISTRY_PASSWORD:
                 required: true
-            CHART_USER:
-                required: true
-            CHART_PASS:
-                required: true
+#            CHART_USER:
+#                required: true
+#            CHART_PASS:
+#                required: true
             DEV_KUBE_CONFIG:
                 required: true
             TOKEN:
@@ -62,8 +62,8 @@ jobs:
             -   name: Add trend repo
                 shell: bash
                 run: |
-                    helm repo add trend http://trend-dev.ru:5000 --username ${{ secrets.CHART_USER }} --password ${{ secrets.CHART_PASS }}
                     helm registry login -u ${{ secrets.DOCKER_REGISTRY_USER }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }} ${{ inputs.DOCKER_REGISTRY }}
+#                    helm repo add trend http://trend-dev.ru:5000 --username ${{ secrets.CHART_USER }} --password ${{ secrets.CHART_PASS }}
 
             -   name: Prepare propertyPath
                 id: path
