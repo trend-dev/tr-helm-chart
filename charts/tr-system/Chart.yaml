@@ -18,5 +18,5 @@ dependencies:
     version: 1.4.2-cabc72d5de9e08add02a620e5e3f7b6cc4126537
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-cp-api
-    version: 1.10.13-e17b454e29dd0d5a9fda0301983188917adfa485
+    version: 1.10.15-fa5617cd2ce3005ed00e7cfac774750e0b5fa948
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
