@@ -24,5 +24,5 @@ dependencies:
     version: 1.11.1-396e685d0dee17092a8dd8081edbc5ea504e6019
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-trendrealty-app
-    version: 5.40.2-220edb14b05bcb714561a313e30cf077e3900db6
+    version: 5.40.3-c6550dd59d704ad22dbeb1cfed89ee373db60090
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
