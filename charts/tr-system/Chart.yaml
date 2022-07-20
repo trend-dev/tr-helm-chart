@@ -23,3 +23,6 @@ dependencies:
   - name: tr-cp-app
     version: 1.11.1-396e685d0dee17092a8dd8081edbc5ea504e6019
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
+  - name: tr-trendrealty-app
+    version: 0.0.1
+    repository: oci://docker-registry.trendagent.ru:5000/helm-charts
