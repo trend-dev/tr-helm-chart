@@ -15,7 +15,7 @@ dependencies:
     version: 1.3.8-f276990dd1db7387b01c0ef5f26d23676d8f8604
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: ta-cabinets-api
-    version: 1.6.3-56f3de66aa51658060ce0ba5fc499ebb02ea6b7d
+    version: 1.6.4-f1a012d02bf1541459a226901300f8287db00866
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-cp-api
     version: 1.10.15-fa5617cd2ce3005ed00e7cfac774750e0b5fa948
