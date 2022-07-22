@@ -31,6 +31,3 @@ jobs:
         with:
             APP_NAME: ${{ needs.version.outputs.APP_NAME }}
             CHART_FOLDER: './charts/tr-system'
-#        secrets:
-#            CHART_USER: ${{ secrets.CHART_USER }}
-#            CHART_PASS: ${{ secrets.CHART_PASS }}
