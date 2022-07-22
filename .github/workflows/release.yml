@@ -48,7 +48,7 @@ jobs:
             -   name: Install Helm
                 uses: azure/setup-helm@v3
                 with:
-                    version: '' #use the latest helm version on github
+                    version: v3.8.0
 
             -   name: Add trend repo
                 shell: bash
