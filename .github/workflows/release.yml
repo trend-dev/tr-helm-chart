@@ -14,20 +14,7 @@ on:
             LOCATION:
                 type: string
                 required: true
-            DOCKER_REGISTRY:
-                description: "Docker registry for helm chart"
-                type: string
-                required: false
-                default: "docker-registry.trendagent.ru:5000"
         secrets:
-            DOCKER_REGISTRY_USER:
-                required: true
-            DOCKER_REGISTRY_PASSWORD:
-                required: true
-#            CHART_USER:
-#                required: true
-#            CHART_PASS:
-#                required: true
             DEV_KUBE_CONFIG:
                 required: true
             TOKEN:
@@ -35,7 +22,7 @@ on:
 
 jobs:
     release:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
@@ -49,21 +36,15 @@ jobs:
                     echo ${{ inputs.APP_NAME }}
                     echo ${{ inputs.APP_VERSION }}
 
-#            -   name: Configure Git
-#                run: |
-#                    git config user.name "$GITHUB_ACTOR"
-#                    git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            -   name: Configure Git
+                run: |
+                    git config user.name "$GITHUB_ACTOR"
+                    git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
             -   name: Install Helm
                 uses: azure/setup-helm@v1
                 with:
-                    version: v3.8.0
-
-            -   name: Add trend repo
-                shell: bash
-                run: |
-                    helm registry login -u ${{ secrets.DOCKER_REGISTRY_USER }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }} ${{ inputs.DOCKER_REGISTRY }}
-#                    helm repo add trend http://trend-dev.ru:5000 --username ${{ secrets.CHART_USER }} --password ${{ secrets.CHART_PASS }}
+                    version: v3.7.1
 
             -   name: Prepare propertyPath
                 id: path
@@ -72,7 +53,7 @@ jobs:
             -   name: Add Kube config
                 shell: bash
                 run: |
-                    mkdir -p ~/.kube
+                    mkdir ~/.kube
                     echo ${{ secrets.DEV_KUBE_CONFIG }} | base64 -d > ~/.kube/config
 
             -   name: Update Image Version in the related HelmChart values.yaml
