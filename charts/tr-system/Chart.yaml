@@ -9,7 +9,7 @@ dependencies:
     version: 2.2.4-92d258788fae2ec93d22531456ad2ca7a1d12151
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-trendrealty-api
-    version: 5.29.3-003581cdf0f935b38912a5a0f24a64ada8a8bfc7
+    version: 5.29.5-6705da2c4a128057c1ebe296564615c26cbf6a8b
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-questionnaire-api
     version: 1.3.8-f276990dd1db7387b01c0ef5f26d23676d8f8604
