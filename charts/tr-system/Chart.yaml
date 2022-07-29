@@ -6,7 +6,7 @@ version: 0.0.2
 appVersion: 0.0.2
 dependencies:
   - name: tr-authentication-api
-    version: 2.2.4-92d258788fae2ec93d22531456ad2ca7a1d12151
+    version: 2.2.5-deccd1cceed75ce96dfeef1b9337c7257514fb9f
     repository: oci://docker-registry.trendagent.ru:5000/helm-charts
   - name: tr-trendrealty-api
     version: 5.29.5-6705da2c4a128057c1ebe296564615c26cbf6a8b
